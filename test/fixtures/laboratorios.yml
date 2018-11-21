@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  organismos: MyText
+  nivel: MyString
+  pesquisador: MyString
+  tel_pesquisador: MyString
+  usuario_id: 1
+
+two:
+  organismos: MyText
+  nivel: MyString
+  pesquisador: MyString
+  tel_pesquisador: MyString
+  usuario_id: 1

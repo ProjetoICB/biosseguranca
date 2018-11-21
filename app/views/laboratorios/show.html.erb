@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Organismos:</b>
+  <%= @laboratorio.organismos %>
+</p>
+
+<p>
+  <b>Nível:</b>
+  <%= @laboratorio.nivel %>
+</p>
+
+<p>
+  <b>Pesquisador responsável:</b>
+  <%= @laboratorio.pesquisador %>
+</p>
+
+<p>
+  <b>Telefone do responsável:</b>
+  <%= @laboratorio.tel_pesquisador %>
+</p>
+
+<%= link_to "Imprimir", laboratorio_path(@laboratorio, format: 'pdf'), target: "_blank" %>
+<%= link_to 'Editar', edit_laboratorio_path(@laboratorio) %> |
+<%= link_to 'Voltar', laboratorios_path %>

@@ -1,0 +1,61 @@
+<script type="text/javascript">
+    $(function() {
+        oTable =  $('#lab').dataTable({
+            "iDisplayLength": 20,
+            "bLengthChange": false,
+            "bJQueryUI":true,
+            "sPaginationType": "full_numbers",
+            "oLanguage": {
+                "sInfo" :                       "Mostrando de _START_ até _END_ de _TOTAL_ registros",
+                "sInfoFiltered":                "Filtrado de _MAX_ registros no total",
+                "sZeroRecords":                 "Sem resultados",
+                "sInfoEmpty":                   "",
+                "sSearch":                      "Buscar",
+                "oPaginate": {
+                    "sFirst":                   "Primeiro ",
+                    "sPrevious":                "Anterior ",
+                    "sNext":                    "Próximo ",
+                    "sLast":                     "Último "
+                }
+
+            }
+
+        });
+    });
+</script>
+
+
+
+<%= render 'menu' %>
+<h1>Laboratórios</h1>
+
+<table id="lab" class="display">
+  <thead>
+  <tr>
+    <th>Organismos</th>
+    <th>Nível</th>
+    <th>Pesquisador responsável</th>
+    <th>Telefone do responsável</th>
+    <th> Ações </th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @laboratorios.each do |laboratorio| %>
+      <tr>
+        <td><%= laboratorio.organismos %></td>
+        <td><%= laboratorio.nivel %></td>
+        <td><%= laboratorio.pesquisador %></td>
+        <td><%= laboratorio.tel_pesquisador %></td>
+        <td><%= link_to 'Imprimir', laboratorio_path(laboratorio, format: 'pdf'),target: "_blank"  %>
+        <%=    link_to 'Mostrar', laboratorio %>
+        <%= link_to 'Editar', edit_laboratorio_path(laboratorio) %>
+        <%= link_to 'Apagar', laboratorio, confirm: 'Tem certeza?', method: :delete %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<br />
+
+<%= link_to 'Novo Laboratório', new_laboratorio_path %>

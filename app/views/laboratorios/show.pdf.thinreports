@@ -1,0 +1,6 @@
+report.start_new_page do |page|
+    page.values nivel: @laboratorio.nivel
+    page.values pesquisador: @laboratorio.pesquisador
+    page.values tel_pesquisador: @laboratorio.tel_pesquisador
+    page.values organismos: @laboratorio.organismos
+end

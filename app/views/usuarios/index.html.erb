@@ -1,0 +1,56 @@
+<script type="text/javascript">
+    $(function() {
+        oTable =  $('#usuario').dataTable({
+            "iDisplayLength": 20,
+            "bLengthChange": false,
+            "bJQueryUI":true,
+            "sPaginationType": "full_numbers",
+            "oLanguage": {
+                "sInfo" :                       "Mostrando de _START_ até _END_ de _TOTAL_ registros",
+                "sInfoFiltered":                "Filtrado de _MAX_ registros no total",
+                "sZeroRecords":                 "Sem resultados",
+                "sInfoEmpty":                   "",
+                "sSearch":                      "Buscar",
+                "oPaginate": {
+                    "sFirst":                   "Primeiro ",
+                    "sPrevious":                "Anterior ",
+                    "sNext":                    "Próximo ",
+                    "sLast":                     "Último "
+                }
+
+            }
+
+        });
+    });
+</script>
+
+<%=  render 'menu' %>
+<h1> Usuários </h1>
+
+<table id="usuario" class="display">
+  <thead>
+  <tr>
+    <th>Nome</th>
+    <th>Email</th>
+    <th>Ações </th>
+
+  </tr>
+  </thead>
+
+  <tbody>
+
+  <% @usuarios.each do |usuario| %>
+      <tr>
+        <td><%= usuario.nome %></td>
+        <td><%= usuario.email %></td>
+        <td><%= link_to 'Mostrar', usuario %>
+        <%= link_to 'Editar', edit_usuario_path(usuario) %>
+        <%= link_to 'Apagar', usuario, confirm: 'Tem certeza?', method: :delete %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<br />
+
+<%= link_to 'Novo Usuário', new_usuario_path %>

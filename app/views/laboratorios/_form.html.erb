@@ -1,0 +1,37 @@
+<%= form_for(@laboratorio) do |f| %>
+  <% if @laboratorio.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@laboratorio.errors.count, "erro(s)") %> impediu(ram) este laboratório de ser salvo:</h2>
+
+      <ul>
+      <% @laboratorio.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :organismos, "Organismos" %><br />
+    <%= f.text_area :organismos %>
+  </div>
+  <div class="field">
+    <%= f.label :nivel, "Nível de Biossegurança" %><br />
+    <%= f.radio_button :nivel, "NB1" %>   NB1
+    <%= f.radio_button :nivel, "NB2" %>   NB2
+    <%= f.radio_button :nivel, "NB3" %>   NB3
+    <%= f.radio_button :nivel, "NB4" %>   NB4
+  </div>
+  <div class="field">
+    <%= f.label :pesquisador, "Pesquisador responsável" %><br />
+    <%= f.text_field :pesquisador %>
+  </div>
+  <div class="field">
+    <%= f.label :tel_pesquisador, "Telefone do responsável" %><br />
+    <%= f.text_field :tel_pesquisador %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Enviar" %>
+  </div>
+<% end %>

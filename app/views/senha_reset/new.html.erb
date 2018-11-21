@@ -1,0 +1,11 @@
+<h1> Recuperação de senha </h1>
+<div id="reset">
+  <%=  form_tag senha_reset_index_path, :method => :post do %>
+
+      <p> <%= label_tag :email, "Digite seu e-mail" %>
+        <%= text_field_tag :email, params[:email] %>
+      </p>
+      </div>
+      <div class="actions"><%= submit_tag "Enviar" %></div>
+  <% end %>
+  <%= link_to "Voltar", root_url %>

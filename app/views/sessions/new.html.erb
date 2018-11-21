@@ -1,0 +1,22 @@
+<h1> Login </h1>
+<div id="inicio">
+  <br>
+  <%= form_tag session_path do %>
+
+      <div class="field">
+        <%= label_tag :email, 'Digite seu e-mail' %>
+        <%= text_field_tag :email %>
+      </div>
+
+      <div class="field">
+        <%= label_tag :senha, "Digite a senha" %>
+        <%= password_field_tag :senha %>
+      </div>
+      <br>
+      <div class="actions">
+        <%= submit_tag "Login" %>
+      </div>
+  <% end %>
+  <%= link_to "Esqueci a senha", new_senha_reset_path  %>
+  <!--%= link_to "Cadastrar usuário", new_usuario_path %-->
+</div>
