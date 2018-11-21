@@ -26,6 +26,11 @@ gem 'jquery-ui-rails'
 gem 'thinreports-rails'
 gem 'pdf-inspector', require: 'pdf/inspector'
 
+
+#senha unica
+gem 'senhaunica'
+gem 'oauth'
+
 # Use unicorn as the web server
 # gem 'unicorn'
 
