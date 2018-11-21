@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150204114811) do
+ActiveRecord::Schema.define(:version => 20181108175846) do
 
   create_table "laboratorios", :force => true do |t|
     t.text     "organismos"
@@ -23,25 +23,53 @@ ActiveRecord::Schema.define(:version => 20150204114811) do
     t.datetime "updated_at",      :null => false
   end
 
-  create_table "sessions", :force => true do |t|
-    t.string   "session_id", :null => false
-    t.text     "data"
+  create_table "logs", :force => true do |t|
+    t.string   "acao"
+    t.string   "ip"
+    t.integer  "usuario_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
 
-  add_index "sessions", ["session_id"], :name => "index_sessions_on_session_id"
-  add_index "sessions", ["updated_at"], :name => "index_sessions_on_updated_at"
+  create_table "perfils", :force => true do |t|
+    t.string   "tipo"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
-  create_table "usuarios", :force => true do |t|
-    t.string   "nome"
-    t.string   "email"
-    t.string   "senha"
-    t.string   "auth_token"
-    t.string   "senha_reset_token"
-    t.datetime "senha_reset_sent_at"
+  create_table "permitidos", :force => true do |t|
+    t.integer  "usuario_id"
+    t.integer  "perfil_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "tipo_vinculos", :force => true do |t|
+    t.string   "tipoVinculo"
+    t.string   "codigoSetor"
+    t.string   "nomeAbreviadSetor"
+    t.string   "nomeSetor"
+    t.string   "codigoUnidade"
+    t.string   "siglaUnidade"
+    t.string   "nomeUnidade"
+    t.string   "nomeVinculo"
+    t.string   "nomeAbreviadoFuncao"
+    t.integer  "usuario_id"
     t.datetime "created_at",          :null => false
     t.datetime "updated_at",          :null => false
+  end
+
+  create_table "usuarios", :force => true do |t|
+    t.string   "nomeUsuario"
+    t.string   "loginUsuario"
+    t.string   "tipoUsuario"
+    t.string   "emailPrincipalUsuario"
+    t.string   "emailAlternativoUsuario"
+    t.string   "emailUspUsuario"
+    t.string   "numeroTelefoneFormatado"
+    t.string   "ramalUsp"
+    t.datetime "created_at",              :null => false
+    t.datetime "updated_at",              :null => false
   end
 
 end
