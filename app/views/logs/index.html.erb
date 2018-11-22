@@ -1,7 +1,7 @@
 <script type="text/javascript">
     $(document).ready(function() {
-        $('#usuarios').dataTable ({
-            "iDisplayLength": 10, <!-- 10 registros por pagina -->
+        $('#log').dataTable ({
+            "iDisplayLength": 15, <!-- 10 registros por pagina -->
             "bPaginate": true,    <!-- Paginação  -->
             "sPaginationType":"full_numbers",   <!-- Opção de mostrar numeros por pagina (1,2,3...) -->
             "bJQueryUI":true,
@@ -25,28 +25,31 @@
     })
 </script>
 
-<h1>Usuários</h1>
+<h1>Logs</h1>
 
+<table class="table table-bordered display" id="log">
+  <thead>
+    <tr>
+      <th class="text-center">Ação</th>
+      <th class="text-center">IP</th>
+      <th class="text-center">Usuário</th>
+      <th class="text-center">Data da ação</th>
+      <th class="text-center">Detalhes</th>
 
-    <table class="table table-bordered display" id="usuarios">
-        <thead>
-            <tr>
-                <th class="text-center">Login</th>
-                <th class="text-center">Nome </th>
-                <th class="text-center">Tipo </th>
-                <th class="text-center">  E-mail Principal </th>
-                <th></th>
-            </tr>
-        </thead>
-          <% @usuarios.each do |usuario| %>
-    <tbody>
-        <tr>
-            <td><%= usuario.loginUsuario %></td>
-            <td><%= usuario.nomeUsuario %></td>
-            <td><%= usuario.tipoUsuario %></td>
-            <td><%= usuario.emailPrincipalUsuario %> </td>
-            <td class="text-center"><%= link_to 'Mostrar', usuario, class: "btn btn-default" %></td>
-        </tr>
-      <% end %>
-        </tbody>
-    </table>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @logs.each do |log| %>
+      <tr>
+        <td><%= log.acao %></td>
+        <td><%= log.ip %></td>
+        <td><%= log.usuario.nomeUsuario %> </td>
+        <td><%= log.created_at.strftime("%d/%m/%Y %H:%M") %></td>
+        <td class="text-center"><%= link_to 'Mostrar detalhes', log, class: "btn btn-default" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
