@@ -1,12 +1,24 @@
 Biosseguranca::Application.routes.draw do
+
+
+  get 'welcome/login'
+  get 'welcome/callback'
+  get 'logout' => 'welcome#destroy', as: 'logout'
+
+
   resources :laboratorios
   resources :usuarios
-  resources :senha_reset
-  resource :session
+  resources :permitidos
+  resources :perfils
+  resources :logs
 
 
-  match '/login' => 'sessions#new' , :as => 'login'
-  match '/logout' => 'sessions#destroy', :as => 'logout'
+
+  root 'welcome#login'
+
+
+ # match '/login' => 'sessions#new' , :as => 'login'
+ # match '/logout' => 'sessions#destroy', :as => 'logout'
 
 
   # The priority is based upon order of creation:
@@ -58,7 +70,7 @@ Biosseguranca::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => 'sessions#new'
+
 
   # See how all your routes lay out with "rake routes"
 

@@ -2,7 +2,7 @@ class LaboratoriosController < ApplicationController
   # GET /laboratorios
   # GET /laboratorios.json
 
-  before_filter :usuario_autenticado?
+  #before_filter :usuario_autenticado?
   def index
     @laboratorios = Laboratorio.order('id desc')
 
