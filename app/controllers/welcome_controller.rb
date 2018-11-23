@@ -2,12 +2,12 @@ class WelcomeController < ApplicationController
 
 
   def login
-    s = Senhaunica.new(['icb_oauth','6QCwxtVxNmdK4XvHp5XJ7SqznjwA7Ecq9VNzUpOW','2'])
+    s = Senhaunica.new('icb_oauth','6QCwxtVxNmdK4XvHp5XJ7SqznjwA7Ecq9VNzUpOW','2')
     redirect_to s.login()
   end
 
   def callback
-    s = Senhaunica.new(['icb_oauth','6QCwxtVxNmdK4XvHp5XJ7SqznjwA7Ecq9VNzUpOW','2'])
+    s = Senhaunica.new('icb_oauth','6QCwxtVxNmdK4XvHp5XJ7SqznjwA7Ecq9VNzUpOW','2')
     @data = s.callback(params[:oauth_verifier])
 
     print @data

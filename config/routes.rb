@@ -1,6 +1,8 @@
 Biosseguranca::Application.routes.draw do
 
 
+  get "temp/index"
+
   get 'welcome/login'
   get 'welcome/callback'
   get 'logout' => 'welcome#destroy', as: 'logout'
@@ -14,7 +16,7 @@ Biosseguranca::Application.routes.draw do
 
 
 
-  root 'welcome#login'
+   root :to => 'welcome#login'
 
 
  # match '/login' => 'sessions#new' , :as => 'login'
