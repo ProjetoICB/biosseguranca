@@ -10,6 +10,14 @@
 
 <p id="notice"> <%= notice %> </p>
 
+<%= link_to "Laboratórios", laboratorios_path %>
+<% if session[:perfil].include? "Administrador" %>
+    <%= link_to "Usuários", usuarios_path %>
+    <%= link_to "Logs", logs_path %>
+    <%= link_to "Perfis", perfils_path %>
+    <%= link_to "Permissões", permitidos_path %>
+<% end %>
+<%= link_to 'Logout', logout_path  %>
 
 
 <%= yield %>
