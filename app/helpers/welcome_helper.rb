@@ -11,13 +11,15 @@ module WelcomeHelper
     @current_user = nil
   end
 
+
   def current_user
-    @current_user ||= Usuario.find_by(loginUsuario: session[:login])
+   @current_user ||= Usuario.find_by_loginUsuario(session[:login])
   end
+
 
   def carregaperfils
 
-    @perfilscadastrados = Permitido.where(:usuario_id => current_user.id)
+   @perfilscadastrados = Permitido.where('usuario_id = ?', current_user.id)
 
     session[:perfil] ||= []
 
@@ -25,8 +27,5 @@ module WelcomeHelper
       session[:perfil] << p.perfil.tipo
     end
   end
-
-
-
 
 end

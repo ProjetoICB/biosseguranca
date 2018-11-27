@@ -1,6 +1,6 @@
 class PermitidosController < ApplicationController
 
-  before_action :set_permitido, only: [:show, :edit, :update, :destroy]
+
 
  # before_filter 'autenticado?'
 
@@ -14,6 +14,7 @@ class PermitidosController < ApplicationController
   # GET /permitidos/1
   # GET /permitidos/1.json
   def show
+    @permitido = Permitido.find(params[:id])
   end
 
   # GET /permitidos/new
@@ -23,17 +24,18 @@ class PermitidosController < ApplicationController
 
   # GET /permitidos/1/edit
   def edit
+    @permitido = Permitido.find(params[:id])
   end
 
   # POST /permitidos
   # POST /permitidos.json
   def create
-    @permitido = Permitido.new(permitido_params)
+    @permitido = Permitido.new(params[:permitido])
 
     respond_to do |format|
       if @permitido.save
-        addlog("Deu permissão a um usuário")
-        format.html { redirect_to @permitido, notice: 'Permissão criada com sucesso.' }
+        addlog("Deu permissao a um usuario")
+        format.html { redirect_to @permitido, notice: 'Permissao criada com sucesso.' }
         format.json { render :show, status: :created, location: @permitido }
       else
         format.html { render :new }
@@ -45,10 +47,11 @@ class PermitidosController < ApplicationController
   # PATCH/PUT /permitidos/1
   # PATCH/PUT /permitidos/1.json
   def update
+    @permitido = Permitido.find(params[:id])
     respond_to do |format|
-      if @permitido.update(permitido_params)
-        addlog("Atualizou a permissão de um usuário")
-        format.html { redirect_to @permitido, notice: 'Permissão atualizada com sucesso.' }
+      if @permitido.update(params[:permitido])
+        addlog("Atualizou a permissao de um usuario")
+        format.html { redirect_to @permitido, notice: 'Permissao atualizada com sucesso.' }
         format.json { render :show, status: :ok, location: @permitido }
       else
         format.html { render :edit }
@@ -60,22 +63,13 @@ class PermitidosController < ApplicationController
   # DELETE /permitidos/1
   # DELETE /permitidos/1.json
   def destroy
+    @permitido = Permitido.find(params[:id])
     @permitido.destroy
-    addlog("Negou permissão de um usuário")
+    addlog("Negou permissao de um usuario")
     respond_to do |format|
-      format.html { redirect_to permitidos_url, notice: 'Permissão apagada com sucesso' }
+      format.html { redirect_to permitidos_url, notice: 'Permissao apagada com sucesso' }
       format.json { head :no_content }
     end
   end
 
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_permitido
-      @permitido = Permitido.find(params[:id])
-    end
-
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def permitido_params
-      params.require(:permitido).permit(:usuario_id, :perfil_id)
-    end
 end

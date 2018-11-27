@@ -10,7 +10,7 @@ class WelcomeController < ApplicationController
     s = Senhaunica.new('icb_oauth','6QCwxtVxNmdK4XvHp5XJ7SqznjwA7Ecq9VNzUpOW','2')
     @data = s.callback(params[:oauth_verifier])
 
-    print @data
+    print "Data = " +   @data.to_s
 
     loginUsuario = tratauser
 
@@ -20,21 +20,24 @@ class WelcomeController < ApplicationController
 
     addlog("Fez login no sistema")
 
+    redirect_to laboratorios_path, notice: "Login feito com sucesso"
 
 
 
+=begin
     if session[:perfil].include? "Administrador"
       redirect_to home_index_path, notice: "Login feito com sucesso"
     else
-      redirect_to home_index_path, notice: "Área restrita ao administrador"
+      redirect_to home_index_path, notice: "Area restrita ao administrador"
     end
+=end
   end
 
   def tratauser
 
     loginUsuario = @data["loginUsuario"]
 
-    userexiste = Usuario.where(:loginUsuario => loginUsuario)
+    userexiste = Usuario.where("loginUsuario = ?", loginUsuario)
 
     if userexiste.empty?
       user = Usuario.new
@@ -61,10 +64,12 @@ class WelcomeController < ApplicationController
 
       vinculoexiste = TipoVinculo.where(:usuario_id => id, :tipoVinculo => v["tipoVinculo"])
 
+
       if vinculoexiste.empty?
         tipoVinc = TipoVinculo.new
       else
-        tipoVinc = TipoVinculo.find_by(:usuario_id => id, :tipoVinculo => v["tipoVinculo"] )
+        #tipoVinc = TipoVinculo.find(:usuario_id => id, :tipoVinculo => v["tipoVinculo"] )
+        tipoVinc = TipoVinculo.find_by_usuario_id_and_tipoVinculo(id,v["tipoVinculo"])
       end
 
       tipoVinc.codigoSetor = v["codigoSetor"]
@@ -77,13 +82,9 @@ class WelcomeController < ApplicationController
       tipoVinc.nomeAbreviadoFuncao = v["nomeAbreviadoFuncao"]
       tipoVinc.tipoVinculo = v["tipoVinculo"]
       tipoVinc.usuario_id = id
-
       tipoVinc.save!
-
     end
-
     return loginUsuario
-
   end
 
   def destroy
