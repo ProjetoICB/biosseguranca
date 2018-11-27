@@ -1,5 +1,6 @@
 class Usuario < ActiveRecord::Base
-  has_many :protocolos
+
+  attr_accessible :loginUsuario, :nomeUsuario, :tipoUsuario, :emailPrincipalUsuario, :emailAlternativoUsuario, :emailUspUsuario, :numeroTelefoneFormatado, :ramalUsp
 
   has_many :tipo_vinculos, dependent: :destroy
   has_many :logs, :dependent => :destroy
