@@ -1,3 +1,4 @@
+# encoding: utf-8
 class PermitidosController < ApplicationController
 
 
@@ -34,7 +35,7 @@ class PermitidosController < ApplicationController
 
     respond_to do |format|
       if @permitido.save
-        addlog("Deu permissao a um usuario")
+        addlog("Deu permissão a um usuário")
         format.html { redirect_to @permitido, notice: 'Permissao criada com sucesso.' }
         format.json { render :show, status: :created, location: @permitido }
       else
@@ -49,8 +50,8 @@ class PermitidosController < ApplicationController
   def update
     @permitido = Permitido.find(params[:id])
     respond_to do |format|
-      if @permitido.update(params[:permitido])
-        addlog("Atualizou a permissao de um usuario")
+      if @permitido.update_attributes(params[:permitido])
+        addlog("Atualizou a permissão de um usuário")
         format.html { redirect_to @permitido, notice: 'Permissao atualizada com sucesso.' }
         format.json { render :show, status: :ok, location: @permitido }
       else
@@ -65,7 +66,7 @@ class PermitidosController < ApplicationController
   def destroy
     @permitido = Permitido.find(params[:id])
     @permitido.destroy
-    addlog("Negou permissao de um usuario")
+    addlog("Negou permissão de um usuário")
     respond_to do |format|
       format.html { redirect_to permitidos_url, notice: 'Permissao apagada com sucesso' }
       format.json { head :no_content }

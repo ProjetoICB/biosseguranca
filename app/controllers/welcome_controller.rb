@@ -1,5 +1,5 @@
+# encoding: utf-8
 class WelcomeController < ApplicationController
-
 
   def login
     s = Senhaunica.new('icb_oauth','6QCwxtVxNmdK4XvHp5XJ7SqznjwA7Ecq9VNzUpOW','2')
@@ -24,13 +24,6 @@ class WelcomeController < ApplicationController
 
 
 
-=begin
-    if session[:perfil].include? "Administrador"
-      redirect_to home_index_path, notice: "Login feito com sucesso"
-    else
-      redirect_to home_index_path, notice: "Area restrita ao administrador"
-    end
-=end
   end
 
   def tratauser

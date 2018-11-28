@@ -1,3 +1,4 @@
+# encoding: utf-8
 class LaboratoriosController < ApplicationController
   # GET /laboratorios
   # GET /laboratorios.json

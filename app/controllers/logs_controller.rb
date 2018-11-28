@@ -1,9 +1,7 @@
+# encoding: utf-8
 class LogsController < ApplicationController
 
-
-
   before_filter :usuario_autenticado?
-
 
   # GET /logs
   # GET /logs.json

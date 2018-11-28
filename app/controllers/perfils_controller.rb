@@ -1,3 +1,4 @@
+# encoding: utf-8
 class PerfilsController < ApplicationController
 
  before_filter :usuario_autenticado?
