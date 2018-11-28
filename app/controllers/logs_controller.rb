@@ -2,7 +2,7 @@ class LogsController < ApplicationController
 
 
 
-  #before_filter 'autenticado?'
+  before_filter :usuario_autenticado?
 
 
   # GET /logs

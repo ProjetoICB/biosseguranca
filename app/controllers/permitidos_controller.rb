@@ -2,7 +2,7 @@ class PermitidosController < ApplicationController
 
 
 
- # before_filter 'autenticado?'
+  before_filter :usuario_autenticado?
 
 
   # GET /permitidos

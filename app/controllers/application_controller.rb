@@ -6,20 +6,10 @@ class ApplicationController < ActionController::Base
   include WelcomeHelper
   include LogsHelper
 
-=begin
   def usuario_autenticado?
-    if session[:usuario_id].blank?
-      redirect_to login_path, notice: "Efetue o login antes de entrar"
-      # return false
+    if session[:login].blank?
+      redirect_to welcome_login_path
+       return false
     end
   end
-
-=end
-
-
-
-
-
-
-
 end
