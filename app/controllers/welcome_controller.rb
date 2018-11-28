@@ -81,6 +81,7 @@ class WelcomeController < ApplicationController
   end
 
   def destroy
+    addlog("Saiu do sistema")
     log_out
     redirect_to root_path
   end

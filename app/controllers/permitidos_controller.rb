@@ -36,7 +36,7 @@ class PermitidosController < ApplicationController
     respond_to do |format|
       if @permitido.save
         addlog("Deu permissão a um usuário")
-        format.html { redirect_to @permitido, notice: 'Permissao criada com sucesso.' }
+        format.html { redirect_to @permitido, notice: 'Permissão criada com sucesso.' }
         format.json { render :show, status: :created, location: @permitido }
       else
         format.html { render :new }
@@ -52,7 +52,7 @@ class PermitidosController < ApplicationController
     respond_to do |format|
       if @permitido.update_attributes(params[:permitido])
         addlog("Atualizou a permissão de um usuário")
-        format.html { redirect_to @permitido, notice: 'Permissao atualizada com sucesso.' }
+        format.html { redirect_to @permitido, notice: 'Permissão atualizada com sucesso.' }
         format.json { render :show, status: :ok, location: @permitido }
       else
         format.html { render :edit }
@@ -68,7 +68,7 @@ class PermitidosController < ApplicationController
     @permitido.destroy
     addlog("Negou permissão de um usuário")
     respond_to do |format|
-      format.html { redirect_to permitidos_url, notice: 'Permissao apagada com sucesso' }
+      format.html { redirect_to permitidos_url, notice: 'Permissão apagada com sucesso' }
       format.json { head :no_content }
     end
   end

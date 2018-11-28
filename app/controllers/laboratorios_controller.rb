@@ -54,7 +54,8 @@ class LaboratoriosController < ApplicationController
 
     respond_to do |format|
       if @laboratorio.save
-        format.html { redirect_to @laboratorio, notice: 'Laboratorio criado com successo.' }
+        addlog("Novo laboratório criado")
+        format.html { redirect_to @laboratorio, notice: 'Laboratório criado com successo.' }
         format.json { render json: @laboratorio, status: :created, location: @laboratorio }
       else
         format.html { render action: "new" }
@@ -70,7 +71,8 @@ class LaboratoriosController < ApplicationController
 
     respond_to do |format|
       if @laboratorio.update_attributes(params[:laboratorio])
-        format.html { redirect_to @laboratorio, notice: 'Laboratorio atualizado com sucesso.' }
+        addlog("Laboratório alterado")
+        format.html { redirect_to @laboratorio, notice: 'Laboratório atualizado com sucesso.' }
         format.json { head :ok }
       else
         format.html { render action: "edit" }
@@ -86,6 +88,7 @@ class LaboratoriosController < ApplicationController
     @laboratorio.destroy
 
     respond_to do |format|
+      addlog("Laboratório excluído")
       format.html { redirect_to laboratorios_url }
       format.json { head :ok }
     end
