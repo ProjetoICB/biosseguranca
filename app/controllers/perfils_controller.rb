@@ -1,7 +1,7 @@
 # encoding: utf-8
 class PerfilsController < ApplicationController
 
- before_filter :usuario_autenticado?
+ # before_filter :usuario_autenticado?
 
   # GET /perfils
   # GET /perfils.json
